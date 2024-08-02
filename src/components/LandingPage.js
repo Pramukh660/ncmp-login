@@ -13,7 +13,7 @@ const buttonData = [
     title: "Monitoring",
     content: "Monitoring is a process to periodically collect, analyse and use information to actively manage performance, maximise positive impacts and minimise the risk of adverse impacts.",
     department: ["admin"],
-    image : monitoring
+    image: monitoring
   },
   {
     path: "https://support.netcon.in:8448/",
@@ -158,13 +158,17 @@ const LandingPage = () => {
             <>
               <h2>{selectedService.title}</h2>
               <div className="win">
-              <img src={selectedService.image} alt={selectedService.title} className="content-image" />
-              <p>{selectedService.content}</p>
+                <img src={selectedService.image} alt={selectedService.title} className="content-image" />
+                <p>{selectedService.content}</p>
               </div>
               {selectedService.path.startsWith("http") ? (
-                <button onClick={() => window.open(selectedService.path, "_blank")}>
-                  Go to {selectedService.title}
-                </button>
+                <iframe
+                  src={selectedService.path}
+                  title={selectedService.title}
+                  width="100%"
+                  height="600px"
+                  frameBorder="0"
+                ></iframe>
               ) : (
                 <button onClick={() => navigate(selectedService.path)}>
                   Go to {selectedService.title}
