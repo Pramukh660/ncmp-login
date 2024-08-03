@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { ThreeDots } from 'react-loader-spinner'; // Import specific loader
 import "./landingPage.css";
 import companyLogo from "../yqgzPwOk.jpg"; // Update the path to your logo
 import userIcon from "../R.png"; // Update the path to your user icon
@@ -70,6 +71,7 @@ const LandingPage = () => {
   const [department, setRole] = useState(null);
   const [filteredButtonData, setFilteredButtonData] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState({ fullName: " ", email: " ", department: " " });
   const [isTooltipVisible, setTooltipVisible] = useState(false);
 
@@ -85,6 +87,7 @@ const LandingPage = () => {
 
   const handleServiceClick = (service) => {
     setSelectedService(service);
+    setLoading(true);
   };
 
   const toggleTooltip = () => {
@@ -162,13 +165,21 @@ const LandingPage = () => {
                 <p>{selectedService.content}</p>
               </div>
               {selectedService.path.startsWith("http") ? (
-                <iframe
-                  src={selectedService.path}
-                  title={selectedService.title}
-                  width="100%"
-                  height="600px"
-                  frameBorder="0"
-                ></iframe>
+                <>
+                  {loading && (
+                    <div className="loading-spinner">
+                      <ThreeDots color="#00BFFF" height={80} width={80} />
+                    </div>
+                  )}
+                  <iframe
+                    src={selectedService.path}
+                    title={selectedService.title}
+                    width="100%"
+                    height="600px"
+                    frameBorder="0"
+                    onLoad={() => setLoading(false)}
+                  ></iframe>
+                </>
               ) : (
                 <button onClick={() => navigate(selectedService.path)}>
                   Go to {selectedService.title}
