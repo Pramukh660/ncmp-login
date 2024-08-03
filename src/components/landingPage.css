@@ -172,3 +172,10 @@
   border-radius: 4px; /* Adds rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
 }
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
