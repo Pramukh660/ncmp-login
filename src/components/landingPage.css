@@ -1,0 +1,174 @@
+.landing-page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.company-logo {
+  height: 80%;
+  width: auto;
+  margin: 0px 5px;
+  border: none;
+}
+
+.company-name {
+  font-size: 40px;
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #f50057;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.logout-button:hover {
+  background-color: #c51162;
+}
+
+.content-container {
+  display: flex;
+  flex-grow: 1;
+  height: calc(100% - 60px);
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.sidebar-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-item:hover {
+  background-color: #e9ecef;
+}
+
+.sidebar-item.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.content h2 {
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 20px;
+}
+
+.content button {
+  padding: 10px 20px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.content button:hover {
+  background-color: #1565c0;
+}
+
+.back-button {
+  padding: 7px 15px;
+  background-color: #35e75b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  background-color: #29b146;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  /* position: absolute; */
+  right: 30px;
+  cursor: pointer;
+  position: relative; /* Change from absolute to relative */
+  margin-left: auto; /* Pushes the user section to the right end */
+}
+
+.user-icon {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.user-info-tooltip {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  padding: 10px;
+  width: 250px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.user-section .user-info-tooltip {
+  display: block;
+}
+
+.content-image {
+  width: 20%;
+  height: 20%;
+  margin-bottom: 20px;
+}
+
+.win {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.button-wrapper {
+  margin-bottom: 20px; /* Adds spacing between button wrappers */
+  padding: 20px; /* Adds padding inside each button wrapper */
+  background-color: #fff; /* Ensures background color for button wrapper */
+  border: 1px solid #ddd; /* Adds border around button wrapper */
+  border-radius: 4px; /* Adds rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
+}
