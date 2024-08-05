@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { ThreeDots } from 'react-loader-spinner'; // Import specific loader
+import { Blocks } from 'react-loader-spinner'; // Import specific loader
 import "./landingPage.css";
 import companyLogo from "../yqgzPwOk.jpg"; // Update the path to your logo
 import userIcon from "../R.png"; // Update the path to your user icon
@@ -168,7 +168,14 @@ const LandingPage = () => {
                 <>
                   {loading && (
                     <div className="loading-spinner">
-                      <ThreeDots color="#00BFFF" height={80} width={80} />
+                      <Blocks
+                        height="80"
+                        width="80"
+                        color="#4fa94d"
+                        ariaLabel="blocks-loading"
+                        wrapperStyle={{}}
+                        wrapperClass="blocks-wrapper"
+                        visible={true} />
                     </div>
                   )}
                   <iframe
