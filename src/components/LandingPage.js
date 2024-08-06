@@ -5,7 +5,15 @@ import { doc, getDoc } from "firebase/firestore";
 import "./landingPage.css";
 import companyLogo from "../yqgzPwOk.jpg"; // Update the path to your logo
 import userIcon from "../R.png"; // Update the path to your user icon
-import monitoring from "../yqgzPwOk.jpg";
+import monitoring from "../images/Monitoring_image.jpg"
+import itsm from "../images/itsm_image.png"
+import automation from "../images/automation_image.jpg"
+import reporting from "../images/reporting_image.jpg"
+import finops from "../images/finops_image.png"
+import soc from "../images/soc_image.png"
+import asset from "../images/asset.jpg"
+import cloud from "../images/cloud management_image.png"
+import noc from "../images/noc_images.webp"
 
 const buttonData = [
   {
@@ -19,49 +27,57 @@ const buttonData = [
     path: "https://support.netcon.in:8448/",
     title: "ITSM",
     content: "ITSM in cloud refers to IT Service Management solutions that are deployed and delivered through cloud infrastructure. ITSM cloud solutions can simplify the operations, planning, and implementation of IT services for businesses.",
-    department: ["admin", "user"]
+    department: ["admin", "user"],
+    image: itsm
   },
   {
     path: "http://20.197.45.42:32167/#/login",
     title: "Automation",
     content: "AWX makes it possible for users across an organization to share, vet, and manage automation content by means of a simple, powerful, and agentless technical implementation. IT managers can provide guidelines on how automation is applied to individual teams",
-    department: ["admin"]
+    department: ["admin"],
+    image: automation
   },
   {
     path: "https://app.powerbi.com/links/G56uML9AUH?ctid=3865b44b-651f-4df8-a0c8-2625494f6198&pbi_source=linkSharea",
     title: "Reporting",
     content: "Cloud reporting involves collecting, analyzing, and presenting data generated in a cloud environment to derive valuable insights for better decision-making12. It transforms raw data into meaningful charts, graphs, and tables, enabling real-time insights and timely decisions.",
-    department: ["admin"]
+    department: ["admin"],
+    image: reporting
   },
   {
     path: "/up",
     title: "Finops",
     content: "FinOps is an operational framework and cultural practice which maximizes the business value of cloud, enables timely data-driven decision making, and creates financial accountability through collaboration between engineering, finance, and business teams.",
-    department: ["admin", "user"]
+    department: ["admin", "user"],
+    image: finops
   },
   {
     path: "/soc",
     title: "SoC",
     content: "A Cloud SOC monitors cloud applications and infrastructure 24/7 to detect vulnerabilities, respond to threats, and prevent attacks. It ensures continuous vigilance over an organization’s IT infrastructure, maintaining security while adhering to compliance requirements.",
-    department: ["admin"]
+    department: ["admin"],
+    image: soc
   },
   {
     path: "/up",
     title: "Asset Management",
     content: "Cloud Asset Management (CAM) is a crucial practice in today’s digital era. It focuses on managing and tracking resources essential for delivering cloud services. These assets include both tangible elements, such as physical or virtual storage and servers, as well as intangible components like software licenses and undocumented staff knowledge",
-    department: ["admin", "user"]
+    department: ["admin", "user"],
+    image: asset
   },
   {
     path: "/up",
     title: "CMP",
     content: "A Cloud Management Platform (CMP) is a software tool that helps organizations manage and optimize their cloud infrastructure across multiple cloud providers and services. CMPs provide a centralized interface for monitoring, provisioning, deploying, and managing cloud resources, such as virtual machines, containers, storage, and networking",
-    department: ["admin", "user"]
+    department: ["admin", "user"],
+    image: cloud
   },
   {
     path: "/noc",
     title: "NoC",
     content: "The Network Operations Center (NOC) is a centralized location where 24/7 monitoring and management of events affecting technology services and infrastructure take place. Originating in the late 1970s by telecommunication service providers, today’s NOCs monitor not only networking equipment but also cloud, power, environmental, and service aspects.",
-    department: ["admin"]
+    department: ["admin"],
+    image: noc
   },
 ];
 
@@ -81,6 +97,10 @@ const LandingPage = () => {
     } catch (error) {
       console.error("Error logging out:", error.message);
     }
+  };
+
+  const handleBack = () => {
+    window.history.back();
   };
 
   const handleServiceClick = (service) => {
@@ -141,6 +161,8 @@ const LandingPage = () => {
             </div>
           )}
         </div>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+        <button className="back-button" onClick={handleBack}><i className="material-icons">arrow_back</i> Back</button>
       </div>
       <div className="content-container">
         <div className="sidebar">

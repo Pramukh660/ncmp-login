@@ -25,8 +25,24 @@ import automation from "../images/automation_image.jpg"
 import automation1 from "../images/automation_logo.png"
 import { Link } from "react-router-dom";
 import plug from "../images/plug.png";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "./firebase";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
-function Home(){
+const Home = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      console.log("User logged out successfully!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error logging out:", error.message);
+    }
+  };
+
     return(
         <Fragment>
             <div className="hero_area">
@@ -36,6 +52,7 @@ function Home(){
         <nav className="navbar navbar-expand-lg custom_nav-container ">
           <a className="navbar-brand" href="">
             <img src={logo} alt=""/>
+            {/* <p>back</p> */}
             <span>
               
             </span>
@@ -53,17 +70,17 @@ function Home(){
                 <Link className="nav-link" to="/homepage"> Home <span className="sr-only">(current)</span></Link>  
                   {/* <a className="nav-link" href="/homepage">Home <span className="sr-only">(current)</span></a> */}
                 </li>
-                {/* <li className="nav-item">
-                  <a className="nav-link" href="about.html"> About</a>
-                </li>  */}
                 <li className="nav-item">
                 <Link className="nav-link" to="/landing"> Service</Link>  
                   {/* <a className="nav-link" href="service.html"> Service </a> */}
                 </li>
-                {/* <li className="nav-item">
-                  <a className="nav-link" href="blog.html"> Blog </a>
+                <li className="nav-item-log">
+                <button className="nav-link-log" onClick={handleLogout}>Logout</button>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
+                <Link className="nav-link-log" to="/login"> Logout</Link>  
+                </li> */}
+                {/* <li className="nav-item">
                   <a className="nav-link" href="contact.html">Contact </a>
                 </li> */}
               </ul>
@@ -89,73 +106,77 @@ function Home(){
           <div className="col-lg-5 col-md-6 offset-lg-1">
             <div className="img_content">
               <div className="img_container">
-                <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
+                <div id="carouselExampleControls" 
+                    className="carousel slide" data-ride="carousel">
                   <div className="carousel-inner">
                     <div className="carousel-item active">
                       <div className="img-box">
-                        <img src={asset} alt=""/>
+                        <img src={asset} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={monitoring} alt=""/>
+                        <img src={monitoring} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={cloud} alt=""/>
+                        <img src={cloud} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={soc} alt=""/>
+                        <img src={soc} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={finops} alt=""/>
+                        <img src={finops} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={reporting} alt=""/>
+                        <img src={reporting} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={itsm} alt=""/>
+                        <img src={itsm} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={noc} alt=""/>
+                        <img src={noc} className="d-block w-100" alt=""/>
                       </div>
                     </div>
 
                     <div className="carousel-item">
                       <div className="img-box">
-                        <img src={automation} alt=""/>
+                        <img src={automation} className="d-block w-100" alt=""/>
                       </div>
                     </div>
+
+                    <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
+              </a>
+              <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
+              </a>
 
                   </div>
                 </div>
               </div>
-              <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span className="sr-only">Previous</span>
-              </a>
-              <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span className="sr-only">Next</span>
-              </a>
+              
             </div>
-
           </div>
         </div>
       </div>
