@@ -79,6 +79,7 @@
 .content {
   flex: 1;
   padding: 20px;
+  position: relative;
 }
 
 .content h2 {
@@ -173,9 +174,15 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
 }
 
+.iframe-content {
+  width: 100%;
+  height: calc(100vh - 60px); /* Adjust height if necessary */
+  border: none;
+}
+
 .loading-spinner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
