@@ -79,7 +79,6 @@
 .content {
   flex: 1;
   padding: 20px;
-  position: relative;
 }
 
 .content h2 {
@@ -172,17 +171,4 @@
   border: 1px solid #ddd; /* Adds border around button wrapper */
   border-radius: 4px; /* Adds rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
-}
-
-.iframe-content {
-  width: 100%;
-  height: calc(100vh - 60px); /* Adjust height if necessary */
-  border: none;
-}
-
-.loading-spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
