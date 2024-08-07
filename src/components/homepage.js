@@ -26,7 +26,7 @@ import automation1 from "../images/automation_logo.png"
 import { Link } from "react-router-dom";
 import plug from "../images/plug.png";
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "./firebase";
+import { auth } from "./firebase";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -48,6 +48,7 @@ const Home = () => {
             <div className="hero_area">
     {/* <!-- header section strats --> */}
     <header className="header_section">
+      <div className="header">
       <div className="container">
         <nav className="navbar navbar-expand-lg custom_nav-container ">
           <a className="navbar-brand" href="">
@@ -87,6 +88,7 @@ const Home = () => {
             </div>
           </div>
         </nav>
+      </div>
       </div>
     </header>
     {/* <!-- end header section -->
@@ -245,7 +247,7 @@ const Home = () => {
           </div>
           <div className="detail-box">
             <h5>
-              Reporting
+              Dashboard 
             </h5>
             <p>
               Cloud reporting involves collecting, analyzing, and presenting data generated in a cloud environment to derive valuable insights for better decision-making12. It transforms raw data into meaningful charts, graphs, and tables, enabling real-time insights and timely decisions.
