@@ -31,7 +31,7 @@ const buttonData = [
     image: itsm
   },
   {
-    path: "http://20.197.45.42:32167/#/login",
+    path: "https://20.197.35.43/#/login",
     title: "Automation",
     content: "AWX makes it possible for users across an organization to share, vet, and manage automation content by means of a simple, powerful, and agentless technical implementation. IT managers can provide guidelines on how automation is applied to individual teams",
     department: ["admin"],
@@ -39,7 +39,7 @@ const buttonData = [
   },
   {
     path: "https://app.powerbi.com/links/G56uML9AUH?ctid=3865b44b-651f-4df8-a0c8-2625494f6198&pbi_source=linkSharea",
-    title: "Reporting",
+    title: "Dashboard",
     content: "Cloud reporting involves collecting, analyzing, and presenting data generated in a cloud environment to derive valuable insights for better decision-making12. It transforms raw data into meaningful charts, graphs, and tables, enabling real-time insights and timely decisions.",
     department: ["admin"],
     image: reporting
@@ -111,6 +111,10 @@ const LandingPage = () => {
     setTooltipVisible(!isTooltipVisible);
   };
 
+  const handleHomeNavigate = () => {
+    navigate("/homepage"); // Navigate to the home page
+  };
+
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
@@ -148,7 +152,9 @@ const LandingPage = () => {
   return (
     <div className="landing-page-container">
       <div className="header">
-        <img src={companyLogo} alt="Company Logo" className="company-logo" />
+      <div className="logo-wrapper" onClick={handleHomeNavigate}>
+          <img src={companyLogo} alt="Company Logo" className="company-logo" />
+        </div>
         <h1 className="company-name">Netcon Technologies</h1>
         <div className="user-section" onClick={toggleTooltip}>
           <img src={userIcon} alt="User Icon" className="user-icon" />
@@ -178,11 +184,11 @@ const LandingPage = () => {
         <div className="content">
           {selectedService ? (
             <>
-              <h2>{selectedService.title}</h2>
+              <h2>{selectedService.title}</h2><br></br>
               <div className="win">
                 <img src={selectedService.image} alt={selectedService.title} className="content-image" />
                 <p>{selectedService.content}</p>
-              </div>
+              </div><br></br>
               {selectedService.path.startsWith("http") ? (
                 <iframe
                   src={selectedService.path}

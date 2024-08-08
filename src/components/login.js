@@ -36,8 +36,8 @@ function Login() {
   return (
     <div className="login-page-container">
       <div className="header">
-        <img src={companyLogo} alt="Company Logo" className="company-logo" />
-        <h1 className="company-name">Netcon</h1>
+        <img src={companyLogo} alt="Company Logo" className="company-logo1" />
+        <h1 className="company-name">Netcon Technologies</h1>
         <div className="user-section">
           {/* <img src={userIcon} alt="User Icon" className="user-icon" /> */}
         </div>

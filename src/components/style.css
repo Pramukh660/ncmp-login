@@ -5,8 +5,8 @@ body {
 }
 
 .layout_padding {
-  padding-top: 90px;
-  padding-bottom: 90px;
+  /* padding-top: 90px; */
+  padding-bottom: 50px;
 }
 
 .layout_padding2 {
@@ -55,7 +55,7 @@ body {
 
 /*header section*/
 .hero_area {
-  height: 98vh;
+  height: 85vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -235,7 +235,7 @@ a:focus {
   position: relative;
   z-index: 2;
   color: #3b3a3a;
-  padding-bottom: 90px;
+  padding-bottom: 50px;
 }
 
 .slider_section .row {
@@ -312,8 +312,8 @@ a:focus {
 .slider_section .carousel-control-prev {
   background-image: url(../images/prev.png);
   background-color: #1b12cd;
-  -webkit-transform: translate(-45px, 0);
-          transform: translate(-45px, 0);
+  -webkit-transform: translate(-40px, 0);
+          transform: translate(-40px, 0);
   
 }
 
