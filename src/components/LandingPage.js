@@ -14,6 +14,13 @@ import soc from "../images/soc_image.png"
 import asset from "../images/asset.jpg"
 import cloud from "../images/cloud management_image.png"
 import noc from "../images/noc_images.webp"
+import Modal from "../Modal"; // Import the modal component
+
+import reporting_images from "../images/reporting_image.png"
+
+import customerLogo from "../images/customer_logo.png"; // Update with the path to your customer logo
+import adminLogo from "../images/admin_logo.webp"; // Update with the path to your admin logo
+import managerLogo from "../images/manager_logo.png"; // Update with the path to your manager logo
 
 const buttonData = [
   {
@@ -81,6 +88,48 @@ const buttonData = [
   },
 ];
 
+const subButtons = {
+  customer: [
+    {
+      title: "Customer Button 1",
+      path: "/customer1",
+      image: reporting_images, // Add image path
+    },
+    {
+      title: "Customer Button 2",
+      path: "/customer2",
+      image: "../images/customer2_image.png", // Add image path
+    },
+    // Add more customer buttons as needed
+  ],
+  admin: [
+    {
+      title: "Admin Button 1",
+      path: "/admin1",
+      image: "../images/admin1_image.png", // Add image path
+    },
+    {
+      title: "Admin Button 2",
+      path: "/admin2",
+      image: "../images/admin2_image.png", // Add image path
+    },
+    // Add more admin buttons as needed
+  ],
+  manager: [
+    {
+      title: "Manager Button 1",
+      path: "/manager1",
+      image: "../images/manager1_image.png", // Add image path
+    },
+    {
+      title: "Manager Button 2",
+      path: "/manager2",
+      image: "../images/manager2_image.png", // Add image path
+    },
+    // Add more manager buttons as needed
+  ],
+};
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const [department, setRole] = useState(null);
@@ -88,11 +137,13 @@ const LandingPage = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [userInfo, setUserInfo] = useState({ fullName: " ", email: " ", department: " " });
   const [isTooltipVisible, setTooltipVisible] = useState(false);
+  const [subButtonCategory, setSubButtonCategory] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState({ imageSrc: '', title: '' });
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      console.log("User logged out successfully!");
       navigate("/login");
     } catch (error) {
       console.error("Error logging out:", error.message);
@@ -105,6 +156,20 @@ const LandingPage = () => {
 
   const handleServiceClick = (service) => {
     setSelectedService(service);
+    setSubButtonCategory(null); // Reset sub-buttons when a new service is selected
+  };
+
+  const handleSubButtonClick = (category) => {
+    setSubButtonCategory(category);
+  };
+
+  const showModal = (imageSrc, title) => {
+    setModalContent({ imageSrc, title });
+    setModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setModalVisible(false);
   };
 
   const toggleTooltip = () => {
@@ -112,7 +177,7 @@ const LandingPage = () => {
   };
 
   const handleHomeNavigate = () => {
-    navigate("/homepage"); // Navigate to the home page
+    navigate("/homepage");
   };
 
   useEffect(() => {
@@ -152,7 +217,7 @@ const LandingPage = () => {
   return (
     <div className="landing-page-container">
       <div className="header">
-      <div className="logo-wrapper" onClick={handleHomeNavigate}>
+        <div className="logo-wrapper" onClick={handleHomeNavigate}>
           <img src={companyLogo} alt="Company Logo" className="company-logo" />
         </div>
         <h1 className="company-name">Netcon Technologies</h1>
@@ -167,8 +232,7 @@ const LandingPage = () => {
             </div>
           )}
         </div>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-        <button className="back-button" onClick={handleBack}><i className="material-icons">arrow_back</i> Back</button>
+        <button className="back-button" onClick={handleBack}>&larr; Back</button>
       </div>
       <div className="content-container">
         <div className="sidebar">
@@ -184,30 +248,72 @@ const LandingPage = () => {
         <div className="content">
           {selectedService ? (
             <>
-              <h2>{selectedService.title}</h2><br></br>
+              <h2>{selectedService.title}</h2>
               <div className="win">
                 <img src={selectedService.image} alt={selectedService.title} className="content-image" />
                 <p>{selectedService.content}</p>
-              </div><br></br>
-              {selectedService.path.startsWith("http") ? (
-                <iframe
-                  src={selectedService.path}
-                  title={selectedService.title}
-                  width="100%"
-                  height="600px"
-                  frameBorder="0"
-                ></iframe>
+              </div>
+
+              {selectedService.title === "Dashboard" ? (
+                <div className="dashboard-service-content">
+                  <div className="dashboard-logos-container">
+                    <div className="dashboard-logo-item" onClick={() => handleSubButtonClick('customer')}>
+                      <img src={customerLogo} alt="Customer Logo" />
+                      <p>Customer</p>
+                    </div>
+                    <div className="dashboard-logo-item" onClick={() => handleSubButtonClick('admin')}>
+                      <img src={adminLogo} alt="Admin Logo" />
+                      <p>Admin</p>
+                    </div>
+                    <div className="dashboard-logo-item" onClick={() => handleSubButtonClick('manager')}>
+                      <img src={managerLogo} alt="Manager Logo" />
+                      <p>Manager</p>
+                    </div>
+                  </div>
+
+                  {subButtonCategory && (
+                    <div className="sub-buttons-container">
+                      {subButtons[subButtonCategory].map((subButton, index) => (
+                        <button
+                          key={index}
+                          className="sub-button"
+                          onClick={() => showModal(subButton.image, subButton.title)}
+                        >
+                          {subButton.title}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ) : (
-                <button onClick={() => navigate(selectedService.path)}>
-                  Go to {selectedService.title}
-                </button>
+                <div className="service-content">
+                  {selectedService.path.startsWith("http") ? (
+                    <iframe
+                      src={selectedService.path}
+                      title={selectedService.title}
+                      width="100%"
+                      height="600px"
+                      frameBorder="0"
+                    ></iframe>
+                  ) : (
+                    <button onClick={() => navigate(selectedService.path)}>
+                      Go to {selectedService.title}
+                    </button>
+                  )}
+                </div>
               )}
             </>
           ) : (
-            <p>Please select a service to see the details.</p>
+            <h1>Welcome to Netcon CMP</h1>
           )}
         </div>
       </div>
+      <Modal
+        isVisible={modalVisible}
+        onClose={hideModal}
+        imageSrc={modalContent.imageSrc}
+        // title={modalContent.title}
+      />
     </div>
   );
 };

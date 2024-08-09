@@ -111,7 +111,7 @@ const NOC = () => {
           )}
         </div>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-        <button className="back-button" onClick={handleBack}><i className="material-icons">arrow_back</i> Back</button>
+        <button className="back-button" onClick={handleBack}><h4>&larr; Back</h4></button>
       </div>
       <br />
       <div className="content">
