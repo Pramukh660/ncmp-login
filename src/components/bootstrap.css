@@ -198,6 +198,8 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  height: 55px;
+  /* width: 50px; */
 }
 
 svg {
@@ -5820,7 +5822,7 @@ a.close.disabled {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: 1000px;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
